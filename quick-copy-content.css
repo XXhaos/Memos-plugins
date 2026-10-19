@@ -47,10 +47,6 @@
   line-height: 1;
 }
 
-/* The native menus open briefly so their exact-copy handler can run. */
-html.memos-one-click-copy-running [data-slot="dropdown-menu-content"] {
-  visibility: hidden !important;
-}
 
 @media (max-width: 640px) {
   .memos-one-click-copy {
@@ -62,3 +58,22 @@ html.memos-one-click-copy-running [data-slot="dropdown-menu-content"] {
     display: none;
   }
 }
+
+.memos-one-click-copy-notice {
+  position: fixed;
+  z-index: 10000;
+  left: 50%;
+  bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  max-width: min(90vw, 32rem);
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--popover, var(--background));
+  color: var(--popover-foreground, var(--foreground));
+  box-shadow: 0 4px 16px #0002;
+  font-size: 0.875rem;
+  pointer-events: none;
+}
+.memos-one-click-copy-notice[hidden] { display: none; }
+.memos-one-click-copy-notice[data-state="error"] { color: var(--destructive); }
